@@ -6,7 +6,9 @@ tasks:
       gp open src/App.svelte
       npm run dev
 ports:
-  - port: 5000
+  - name: Example preview
+    description: Example App preview
+    port: 5000
     onOpen: ignore
   - port: 35729
     onOpen: ignore
