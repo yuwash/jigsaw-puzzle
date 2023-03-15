@@ -21,20 +21,3 @@ Click the above "Open in Gitpod" button to start a new workspace. Once you're re
 ### An existing project
 
 To get started with Svelte on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
-
-In addition, please perform the following steps:
-
-1. Set an environment variable
-
-   ```bash
-   export CLIENT_URL="$(gp url 35729)/livereload.js?snipver=1&port=443"
-   ```
-
-1. Pass the env value to the live reload module in [`rollup.config.js:65`](https://github.com/gitpod-io/sveltejs-template/blob/587088aae9cb7331c27591b7f8cef9d58c037e46/rollup.config.js#L66-L69)
-   ```js
-   !production && livereload({
-     watch: 'public',
-     clientUrl: process.env.CLIENT_URL
-   }),
-   ```
-   This will set `CLIENT_URL` with the workspace URL of `35729` (default port for live reload).
