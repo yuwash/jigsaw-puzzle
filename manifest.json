@@ -1,0 +1,13 @@
+{
+    "name": "Jigsaw Puzzle",
+    "short_name": "Puzzle",
+    "start_url" : "/",
+    "description": "Simple jigsaw puzzle game.",
+    "icons": [
+      {
+        "src": "favicon.jpg",
+        "type": "image/jgg",
+        "sizes": "64x64"
+      }
+    ]
+  }

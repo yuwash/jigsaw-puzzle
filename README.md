@@ -1,23 +1,14 @@
-# A Svelte template on Gitpod
+# Jigsaw Puzzle
 
-This is a [Svelte](https://svelte.dev) template configured for ephemeral cloud development environments on [Gitpod](https://www.gitpod.io/).
+Simple jigsaw puzzle game (currently very rudimental)
 
-## SvelteKit
+## What it already can
 
-If you are looking for a SvelteKit example, please use [template-sveltekit](https://github.com/gitpod-io/template-sveltekit).
+* It recognizes when all tiles are put to the right cell
+* Easy to configure for any grid size
+* Works with any screen width (though changing the screen width mid-game
+  is buggy)
 
-## Next Steps
+## What’s to be done next
 
-Click the button below to start a new development environment:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/template-sveltejs)
-
-## Get Started With Your Own Project
-
-### A new project
-
-Click the above "Open in Gitpod" button to start a new workspace. Once you're ready to push your first code changes, Gitpod will guide you to fork this project so you own it.
-
-### An existing project
-
-To get started with Svelte on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
+* Use pictures instead of text for the the tiles
