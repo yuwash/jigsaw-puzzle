@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.jpg" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      window.puzzleConfig = {
+        puzzles: {
+          'puzzle-1c3r2': {
+            width: 3,
+            height: 2,
+            label: 'Puzzle 1 (3x2)'
+          },
+          'puzzle-2c4r4': {
+            width: 4,
+            height: 4,
+            label: 'Puzzle 2 (4x4)'
+          }
+        }
+      }
+    </script>
     <title>Puzzle App</title>
   </head>
   <body>
-    <div id="app"></div>
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">
+            <img src="/favicon.jpg" alt="Jigsaw Puzzle Logo" style="height: 1em;">
+            Jigsaw Puzzle
+          </li>
+          <li><a href="//github.com/yuwash/jigsaw-puzzle">GitHub Repository</a></li>
+          <li><a href="/">About me</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <!-- We can now combine rows and columns when there's only one column in that row -->
+    <div class="row medium-8 large-7 columns">
+      <h1>Demo</h1>
+      <p>You can solve them by moving the tiles to the top area.</p>
+
+      <div class="blog-post">
+        <h2>3 &#215; 2 Grid</h2>
+        <div class="puzzle" id="puzzle-1c3r2"></div>
+      </div>
+
+      <div class="blog-post">
+        <h2>4 &#215; 4 Grid</h2>
+        <div class="puzzle" id="puzzle-2c4r4"></div>
+      </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
   </body>
 </html>
