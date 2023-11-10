@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export const makePuzzle = (name, cols, rows) => {
+export const makePuzzle = (name, cols, rows, label) => {
   const shape = { width: 1 / cols, height: 1 / rows }
   const indices = [cols, rows].reduce(
     // Cartesian product of ranges.
@@ -24,7 +24,7 @@ export const makePuzzle = (name, cols, rows) => {
     _.zip(shelf.map(tile => tile.name), grid.map(cell => cell.name))
   )
   return {
-    name, tiles, tileTargets, grid, shelf, correctAllocation
+    name, label, tiles, tileTargets, grid, shelf, correctAllocation
   }
 }
 

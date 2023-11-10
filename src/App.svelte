@@ -9,7 +9,7 @@ const onDrag = ({ detail: e }) => {
 </script>
 
 <main class={'puzzle' + (finished ? ' finished' : '')}>
-	<h1>Puzzle</h1>
+	<p class="puzzle-label"><strong>{puzzle.label}</strong></p>
 	<div class="grid" id="grid-{puzzle.name}">
 	{#each puzzle.grid as cell}
 	<div class="grid-cell" id="grid-cell-{puzzle.name}-{cell.name}" style="left: {cell.x * 100}%; top: {cell.y * 100}%; width: {cell.shape.width * 100}%; height: {cell.shape.height * 100}%;"></div>
@@ -27,8 +27,8 @@ const onDrag = ({ detail: e }) => {
 
 <style>
 	.tile {display: inline-block; position: absolute; background-color: bisque;}
-	.finished h1 {color: green;}
-	.finished h1:after {content: ' 🎉';}
+	.finished .puzzle-label {color: green;}
+	.finished .puzzle-label:after {content: ' 🎉';}
 	.grid {position: relative; width: 100%; height: 10em; background-color:lavenderblush;}
 	.grid-cell {display: inline-block; position: absolute}
 	.grid-cell:hover, .grid-cell:active {background-color:mintcream;}

@@ -1,11 +1,19 @@
 import App from './App.svelte'
 import { makePuzzle, checkTiles } from './puzzle'
 
-const puzzle0 = makePuzzle('p0', 3, 2)
+const config = window.puzzleConfig
+const defaultParams = {
+  width: 3,
+  height: 2,
+  label: 'Untitled Puzzle'
+}
 
-const app = new App({
-  target: document.body,
-  props: { puzzle: puzzle0, checkTiles }
+const apps = document.querySelectorAll('.puzzle').forEach(target => {
+  const params = config.puzzles[target.id] ?? defaultParams
+  const puzzle = makePuzzle(target.id, params.width, params.height, params.label)
+  return new App({
+    target, props: { puzzle: puzzle, checkTiles }
+  })
 })
 
-export default app
+export default apps
