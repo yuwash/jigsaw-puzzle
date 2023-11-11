@@ -1,5 +1,5 @@
 import App from './App.svelte'
-import { makePuzzle, checkTiles } from './puzzle'
+import { makePuzzle, checkTiles, setImage } from './puzzle'
 
 const config = window.puzzleConfig
 const defaultParams = {
@@ -12,7 +12,7 @@ const apps = document.querySelectorAll('.puzzle').forEach(target => {
   const params = config.puzzles[target.id] ?? defaultParams
   const puzzle = makePuzzle(target.id, params.width, params.height, params.label)
   return new App({
-    target, props: { puzzle: puzzle, checkTiles }
+    target, props: { puzzle, checkTiles, setImage }
   })
 })
 

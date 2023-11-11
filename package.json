@@ -16,6 +16,7 @@
     "vite-plugin-pwa": "^0.16.7"
   },
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.0",
     "lodash": "^4.17.21"
   }
 }
