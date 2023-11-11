@@ -12,7 +12,8 @@
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "svelte": "^3.56.0",
     "svelte-moveable": "^0.44.0",
-    "vite": "^4.1.4"
+    "vite": "^4.1.4",
+    "vite-plugin-pwa": "^0.16.7"
   },
   "dependencies": {
     "lodash": "^4.17.21"
