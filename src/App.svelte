@@ -41,12 +41,12 @@ const onFileChange = event => {
 </main>
 
 <style>
-	.tile {display: inline-block; position: absolute; background-color: bisque;}
+	.tile {display: inline-block; position: absolute; background-color: bisque; outline: 1px solid orange;}
 	.finished .puzzle-label {color: green;}
 	.finished .puzzle-label:after {content: ' 🎉';}
 	.grid {position: relative; width: 100%; background-color:lavenderblush;}
 	.grid-cell {display: inline-block; position: absolute}
 	.grid-cell:hover, .grid-cell:active {background-color:mintcream;}
 	.shelf {position: relative; width: 100%; background-color: aliceblue;}
-	:global(.tile-movable .moveable-origin) {opacity: 0;}
+	:global(.tile-movable .moveable-origin, .tile-movable .moveable-line) {opacity: 0;}
 </style>

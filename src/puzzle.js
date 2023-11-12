@@ -77,29 +77,47 @@ export const checkTiles = puzzle => {
     ]))
   return _.every(resultOfEachTile)
 }
-export const setImage = (puzzle, file) => (
-  file.text().then(fileContent => {
-    const originalViewBox = SVG().svg(fileContent).node.querySelector('svg').viewBox.baseVal
-    const ratio = originalViewBox.width / originalViewBox.height
-    const gridBBox = document.querySelector(`#grid-${puzzle.name}`).getBoundingClientRect()
-    const scale = gridBBox.width / originalViewBox.width
-    const newGridHeight = ratio ? gridBBox.width / ratio : gridBBox.height
-    Object.entries(puzzle.correctAllocation).forEach(([tileName, cellName]) => {
-      const tileElement = getElementForTile(puzzle, tileName)
-      const svgElement = tileElement.querySelector('svg')
-      const cell = puzzle.cellByName[cellName]
-      const tileWidth = gridBBox.width * cell.shape.width
-      const tileHeight = newGridHeight * cell.shape.height
-      const draw = SVG(svgElement)
-      const fileSvg = SVG().svg(fileContent).first()
-      // svg(.., true) makes the following group.add fail.
-      // Withoug svg.first, it would create another layer of svg.
-      const drawGroup = draw.group().add(fileSvg)
-      drawGroup.move(-originalViewBox.width * cell.x, -originalViewBox.height * cell.y)
-      drawGroup.scale(scale, 0, 0)
-    })
-    if (ratio) {
-      puzzle.height = 100 * newGridHeight / window.innerWidth // Css vw unit.
-    }
+const setSvgImage = (puzzle, getImageSvg) => {
+  const imageSvg = getImageSvg()
+  // Viewbox is the page, bbox contains potential overflows.
+  // Some svg files don’t have a viewbox, so falling back to bbox then.
+  const originalViewBox = imageSvg.first().viewbox()
+  const originalBBox = imageSvg.first().bbox()
+  const useBBox = !(originalViewBox.height && originalViewBox.width)
+  const originalBox = useBBox ? originalBBox : originalViewBox
+  const ratio = originalBox.width / originalBox.height
+  const gridBBox = document.querySelector(`#grid-${puzzle.name}`).getBoundingClientRect()
+  const scale = gridBBox.width / originalBox.width
+  const newGridHeight = ratio ? gridBBox.width / ratio : gridBBox.height
+  Object.entries(puzzle.correctAllocation).forEach(([tileName, cellName]) => {
+    const cell = puzzle.cellByName[cellName]
+    const tileElement = getElementForTile(puzzle, tileName)
+    const svgElement = tileElement.querySelector('svg')
+    const draw = SVG(svgElement)
+    draw.clear()
+    const imageSvg = getImageSvg().first()
+    // svg(.., true) makes the following group.add fail.
+    // Withoug svg.first, it would create another layer of svg.
+    const drawGroup = draw.group().add(imageSvg)
+    drawGroup.move(-originalBox.width * cell.x, -originalBox.height * cell.y)
+    drawGroup.scale(scale, 0, 0)
   })
-)
+  if (ratio) {
+    puzzle.height = 100 * newGridHeight / window.innerWidth // Css vw unit.
+  }
+}
+export const setImage = (puzzle, file) => {
+  if (file.type === 'image/svg+xml') {
+    return file.text().then(fileContent => setSvgImage(
+      puzzle, () => SVG().svg(fileContent) // Need to create a new svg as cloning seems to be buggy.
+    ))
+  }
+  const imageSvg = SVG()
+  return new Promise(resolve => imageSvg.image(URL.createObjectURL(file),
+    event => {
+      imageSvg.size(event.target.naturalWidth, event.target.naturalHeight)
+      setSvgImage(puzzle, () => imageSvg.clone())
+      resolve()
+    }
+  ))
+}
