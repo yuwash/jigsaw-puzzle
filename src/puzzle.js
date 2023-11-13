@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import { SVG } from '@svgdotjs/svg.js'
 
-export const makePuzzle = (name, cols, rows, label, initHeight = 50) => {
+export const makePuzzle = (name, { cols, rows, label, initHeight, exampleImage }) => {
   const shape = { width: 1 / cols, height: 1 / rows }
   const indices = [cols, rows].reduce(
     // Cartesian product of ranges.
@@ -30,7 +30,7 @@ export const makePuzzle = (name, cols, rows, label, initHeight = 50) => {
     _.zip(shelf.map(tile => tile.name), grid.map(cell => cell.name))
   )
   return {
-    name, label, tiles, tileByName, tileTargets, grid, cellByName, shelf, correctAllocation, height: initHeight
+    name, label, tiles, tileByName, tileTargets, grid, cellByName, shelf, correctAllocation, height: initHeight, exampleImage
   }
 }
 
@@ -106,18 +106,21 @@ const setSvgImage = (puzzle, getImageSvg) => {
     puzzle.height = 100 * newGridHeight / window.innerWidth // Css vw unit.
   }
 }
-export const setImage = (puzzle, file) => {
-  if (file.type === 'image/svg+xml') {
-    return file.text().then(fileContent => setSvgImage(
-      puzzle, () => SVG().svg(fileContent) // Need to create a new svg as cloning seems to be buggy.
-    ))
-  }
+export const setImageByUrl = (puzzle, url) => {
   const imageSvg = SVG()
-  return new Promise(resolve => imageSvg.image(URL.createObjectURL(file),
+  return new Promise(resolve => imageSvg.image(url,
     event => {
       imageSvg.size(event.target.naturalWidth, event.target.naturalHeight)
+      console.log([event.target, imageSvg])
       setSvgImage(puzzle, () => imageSvg.clone())
       resolve()
     }
   ))
 }
+export const setImage = (puzzle, file) => (
+  (file.type === 'image/svg+xml') ? (
+    file.text().then(fileContent => setSvgImage(
+      puzzle, () => SVG().svg(fileContent) // Need to create a new svg as cloning seems to be buggy.
+    ))
+  ) : setImageByUrl(puzzle, URL.createObjectURL(file))
+)

@@ -1,7 +1,7 @@
 <script>
 import Moveable from "svelte-moveable";
 import { writable } from "svelte/store";
-export let puzzle, checkTiles, setImage, finished;
+export let puzzle, checkTiles, setImage, setImageByUrl, finished;
 let height = puzzle.height;  // For reactiveness.
 const onDrag = ({ detail: e }) => {
 	e.target.style.transform = e.transform;
@@ -13,14 +13,21 @@ const onFileChange = event => {
 	if (!file) return;
 	setImage(puzzle, event.target.files[0]).then(() => {
 		height = puzzle.height;
-		console.log([height, puzzle.height]);
 	});
+}
+const onSetExampleImage = () => {
+	setImageByUrl(puzzle, puzzle.exampleImage.url).then(() => {
+		height = puzzle.height;
+	})
 }
 </script>
 
 <main class={'puzzle' + (finished ? ' finished' : '')}>
 	<p class="puzzle-label"><strong>{puzzle.label}</strong></p>
-	<p><input type="file" id="file-input-{puzzle.name}" on:change={onFileChange}/></p>
+	<p>
+		<input type="file" id="file-input-{puzzle.name}" on:change={onFileChange}/>
+		<button type="button" class="button" on:click={onSetExampleImage}>Use example image</button>
+	</p>
 	<div class="grid" id="grid-{puzzle.name}" style="height: {height}vw">
 	{#each puzzle.grid as cell}
 	<div class="grid-cell" id="grid-cell-{puzzle.name}-{cell.name}" style="left: {cell.x * 100}%; top: {cell.y * 100}%; width: {cell.shape.width * 100}%; height: {cell.shape.height * 100}%;"></div>
