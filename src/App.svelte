@@ -1,8 +1,13 @@
 <script>
 import Moveable from "svelte-moveable";
-import { writable } from "svelte/store";
-export let puzzle, checkTiles, setImage, setImageByUrl, finished;
-let height = puzzle.height;  // For reactiveness.
+import { tick } from "svelte";
+export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, finished;
+
+// Foollowing variables are for reactiveness.
+let height = puzzle.height;
+let horizontalGuidelines = puzzle.horizontalGuidelines;
+let verticalGuidelines = puzzle.verticalGuidelines;
+
 const onDrag = ({ detail: e }) => {
 	e.target.style.transform = e.transform;
 	const finishedNow = checkTiles(puzzle);
@@ -11,15 +16,22 @@ const onDrag = ({ detail: e }) => {
 const onFileChange = event => {
 	const file = event.target.files[0];
 	if (!file) return;
-	setImage(puzzle, event.target.files[0]).then(() => {
-		height = puzzle.height;
-	});
+	setImage(puzzle, event.target.files[0]).then(afterRescale);
 }
 const onSetExampleImage = () => {
-	setImageByUrl(puzzle, puzzle.exampleImage.url).then(() => {
-		height = puzzle.height;
-	})
+	setImageByUrl(puzzle, puzzle.exampleImage.url).then(afterRescale);
 }
+const updateMoveableGuidelines = () => {
+	updateGuidelines(puzzle);
+	horizontalGuidelines = puzzle.horizontalGuidelines;
+	verticalGuidelines = puzzle.verticalGuidelines;
+}
+const afterRescale = () => {
+	height = puzzle.height;
+	tick().then(updateMoveableGuidelines);
+}
+window.addEventListener('load', updateMoveableGuidelines);
+window.addEventListener('resize', () => {rescale(puzzle); afterRescale();});
 </script>
 
 <main class={'puzzle' + (finished ? ' finished' : '')}>
@@ -40,8 +52,15 @@ const onSetExampleImage = () => {
 			<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">{tile.label}</text>
 		</svg>
 	</div>
-	<Moveable className="tile-movable" target={puzzle.tileTargets[tile.name]} draggable={true}
-	on:drag={onDrag}
+	<Moveable
+		className="tile-movable"
+		target={puzzle.tileTargets[tile.name]}
+		draggable={true}
+		snappable={true}
+		horizontalGuidelines={horizontalGuidelines}
+		verticalGuidelines={verticalGuidelines}
+		snapThreshold={10}
+		on:drag={onDrag}
 	/>
 	{/each}
 	</div>

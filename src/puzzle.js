@@ -30,7 +30,20 @@ export const makePuzzle = (name, { cols, rows, label, initHeight, exampleImage }
     _.zip(shelf.map(tile => tile.name), grid.map(cell => cell.name))
   )
   return {
-    name, label, tiles, tileByName, tileTargets, grid, cellByName, shelf, correctAllocation, height: initHeight, exampleImage
+    name,
+    label,
+    tiles,
+    tileByName,
+    tileTargets,
+    grid,
+    cellByName,
+    shelf,
+    correctAllocation,
+    height: initHeight,
+    exampleImage,
+    scaledGridWidth: undefined,
+    horizontalGuidelines: [],
+    verticalGuidelines: []
   }
 }
 
@@ -86,9 +99,6 @@ const setSvgImage = (puzzle, getImageSvg) => {
   const useBBox = !(originalViewBox.height && originalViewBox.width)
   const originalBox = useBBox ? originalBBox : originalViewBox
   const ratio = originalBox.width / originalBox.height
-  const gridBBox = document.querySelector(`#grid-${puzzle.name}`).getBoundingClientRect()
-  const scale = gridBBox.width / originalBox.width
-  const newGridHeight = ratio ? gridBBox.width / ratio : gridBBox.height
   Object.entries(puzzle.correctAllocation).forEach(([tileName, cellName]) => {
     const cell = puzzle.cellByName[cellName]
     const tileElement = getElementForTile(puzzle, tileName)
@@ -100,18 +110,42 @@ const setSvgImage = (puzzle, getImageSvg) => {
     // Withoug svg.first, it would create another layer of svg.
     const drawGroup = draw.group().add(imageSvg)
     drawGroup.move(-originalBox.width * cell.x, -originalBox.height * cell.y)
+    const clipRect = draw.rect(
+      originalBox.width * cell.shape.width, originalBox.height * cell.shape.height
+    )
+    drawGroup.clipWith(clipRect)
+  })
+  puzzle.scaledGridWidth = originalBox.width
+  if (ratio) {
+    puzzle.height = 100 * originalBox.height / window.innerWidth // Css vw unit.
+  }
+  const scale = rescale(puzzle)
+  puzzle.height *= scale
+}
+export const rescale = puzzle => {
+  if (!puzzle.scaledGridWidth) {
+    return
+  }
+  const gridBBox = document.querySelector(`#grid-${puzzle.name}`).getBoundingClientRect()
+  const scale = gridBBox.width / puzzle.scaledGridWidth
+  Object.entries(puzzle.correctAllocation).forEach(([tileName, cellName]) => {
+    const tileElement = getElementForTile(puzzle, tileName)
+    const svgElement = tileElement.querySelector('svg')
+    const draw = SVG(svgElement)
+    const drawGroup = draw.findOne('svg > g')
+    const groupBBox = drawGroup.bbox()
     drawGroup.scale(scale, 0, 0)
   })
-  if (ratio) {
-    puzzle.height = 100 * newGridHeight / window.innerWidth // Css vw unit.
-  }
+  puzzle.scaledGridWidth = gridBBox.width
+  // puzzle.height doesn’t need to change because it’s in the css vw unit.
+  // One exception is when the scaledGridWidth is set to a size
+  return scale
 }
 export const setImageByUrl = (puzzle, url) => {
   const imageSvg = SVG()
   return new Promise(resolve => imageSvg.image(url,
     event => {
       imageSvg.size(event.target.naturalWidth, event.target.naturalHeight)
-      console.log([event.target, imageSvg])
       setSvgImage(puzzle, () => imageSvg.clone())
       resolve()
     }
@@ -124,3 +158,20 @@ export const setImage = (puzzle, file) => (
     ))
   ) : setImageByUrl(puzzle, URL.createObjectURL(file))
 )
+export const getGuidelines = (origin, cells) => {
+  const [gridX, gridY] = _.unzip(cells.map(cell => [cell.x, cell.y]))
+  return {
+    horizontalGuidelines: _.uniq(gridY).map(y => y - origin.y),
+    verticalGuidelines: _.uniq(gridX).map(x => x - origin.x)
+  }
+}
+export const updateGuidelines = puzzle => {
+  const shelfElement = document.querySelector(`#shelf-${puzzle.name}`)
+  const origin = shelfElement.getClientRects()[0]
+  const cells = puzzle.grid.map(cell => (
+    getElementForGridCell(puzzle, cell).getBoundingClientRect()
+  ))
+  const guidelines = getGuidelines(origin, cells)
+  puzzle.horizontalGuidelines = guidelines.horizontalGuidelines
+  puzzle.verticalGuidelines = guidelines.verticalGuidelines
+}
