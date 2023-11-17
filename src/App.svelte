@@ -50,9 +50,12 @@ const afterRescale = () => {
 	height = puzzle.height;
 	tick().then(updateMoveableGuidelines);
 }
-window.addEventListener('load', updateMoveableGuidelines);
-window.addEventListener('resize', () => {rescale(puzzle); afterRescale();});
 </script>
+
+<svelte:window
+	on:load={updateMoveableGuidelines}
+	on:resize={() => {rescale(puzzle); afterRescale();}}
+/>
 
 <main class={'puzzle' + (finished ? ' finished' : '')}>
 	<p class="puzzle-label"><strong>{puzzle.label}</strong></p>
