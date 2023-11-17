@@ -50,6 +50,18 @@ export const shuffle = puzzle => {
   })
 }
 
+export const solutionMoves = puzzle => {
+  const gridCellBoundingClientRects = getGridCellBoundingClientRects(puzzle)
+  return Object.fromEntries(Object.entries(puzzle.correctAllocation).map(([tileName, cellName]) => {
+    const cellBox = gridCellBoundingClientRects[cellName]
+    const tileBox = getElementForTile(puzzle, tileName).getBoundingClientRect()
+    return [
+      tileName,
+      { deltaX: cellBox.left - tileBox.left, deltaY: cellBox.top - tileBox.top }
+    ]
+  }))
+}
+
 const getGridCellBoundingClientRects = puzzle => (
   Object.fromEntries(puzzle.grid.map(cell => [
     cell.name, getElementForGridCell(puzzle, cell).getBoundingClientRect()

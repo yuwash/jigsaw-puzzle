@@ -1,6 +1,6 @@
 import App from './App.svelte'
 import blurUrl from './blur.jpg'
-import { makePuzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle } from './puzzle'
+import { makePuzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, solutionMoves } from './puzzle'
 
 const config = window.puzzleConfig
 const defaultParams = {
@@ -16,7 +16,7 @@ const apps = document.querySelectorAll('.puzzle').forEach(target => {
   const puzzle = makePuzzle(target.id, params)
   shuffle(puzzle)
   return new App({
-    target, props: { puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle }
+    target, props: { puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, solutionMoves }
   })
 })
 

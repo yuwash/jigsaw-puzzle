@@ -2,7 +2,7 @@
 import Moveable from "svelte-moveable";
 import { writable } from 'svelte/store';
 import { tick } from "svelte";
-export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, finished;
+export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, solutionMoves, finished;
 let moveablesByTile = {};
 
 const tileBoxesFromPuzzle = puzzle => Object.fromEntries(puzzle.shelf.map(
@@ -38,6 +38,7 @@ const resetMoveables = () => {
 	}
 }
 const shufflePuzzle = () => {
+	resetMoveables();
 	shuffle(puzzle);
 	tileBoxes.set(tileBoxesFromPuzzle(puzzle));
 }
@@ -49,6 +50,13 @@ const updateMoveableGuidelines = () => {
 const afterRescale = () => {
 	height = puzzle.height;
 	tick().then(updateMoveableGuidelines);
+}
+const solvePuzzle = () => {
+	const moves = solutionMoves(puzzle);	
+	for (const [tileName, move] of Object.entries(moves)) {
+		const moveable = moveablesByTile[tileName];
+		moveable.request("draggable", move, true);
+	}
 }
 </script>
 
@@ -64,6 +72,7 @@ const afterRescale = () => {
 		<button type="button" class="button" on:click={onSetExampleImage}>Use example image</button>
 		<button type="button" class="button" on:click={resetMoveables}>Reset</button>
 		<button type="button" class="button" on:click={shufflePuzzle}>Shuffle</button>
+		<button type="button" class="button" on:click={solvePuzzle}>Solve</button>
 	</p>
 	<div class="grid" id="grid-{puzzle.name}" style="height: {height}vw">
 	{#each puzzle.grid as cell}
