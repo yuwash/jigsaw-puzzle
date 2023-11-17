@@ -9,21 +9,16 @@ export const makePuzzle = (name, { cols, rows, label, initHeight, exampleImage }
     (result, n) => result.flatMap(partial => _.range(n).map(i => [...partial, i])),
     [[]]
   )
-  const tiles = indices.map(
-    (xyIndex, i) => ({ label: `${i}`, shape, name: `T${i}`, x: 0, y: 0 })
-  )
-  const tileByName = Object.fromEntries(tiles.map(t => [t.name, t]))
-  const initialOrder = _.shuffle(indices)
-  tiles.forEach((tile, i) => {
-    tile.x = shape.width * initialOrder[i][0]
-    tile.y = shape.height * initialOrder[i][1]
-  })
-  const tileTargets = Object.fromEntries(tiles.map(c => [c.name, null]))
   const grid = indices.map(
     ([ix, iy]) => (
       { x: ix * shape.width, y: iy * shape.height, shape, name: `${ix}-${iy}` }
     )
   )
+  const tiles = grid.map(
+    (cell, i) => ({ label: `${i}`, shape, name: `T${i}`, x: cell.x, y: cell.y })
+  )
+  const tileByName = Object.fromEntries(tiles.map(t => [t.name, t]))
+  const tileTargets = Object.fromEntries(tiles.map(c => [c.name, null]))
   const cellByName = Object.fromEntries(grid.map(cell => [cell.name, cell]))
   const shelf = Array.from(tiles)
   const correctAllocation = Object.fromEntries(
@@ -45,6 +40,14 @@ export const makePuzzle = (name, { cols, rows, label, initHeight, exampleImage }
     horizontalGuidelines: [],
     verticalGuidelines: []
   }
+}
+
+export const shuffle = puzzle => {
+  const order = _.shuffle(puzzle.grid)
+  puzzle.tiles.forEach((tile, i) => {
+    tile.x = order[i].x
+    tile.y = order[i].y
+  })
 }
 
 const getGridCellBoundingClientRects = puzzle => (

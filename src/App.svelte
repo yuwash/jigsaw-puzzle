@@ -1,7 +1,14 @@
 <script>
 import Moveable from "svelte-moveable";
+import { writable } from 'svelte/store';
 import { tick } from "svelte";
-export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, finished;
+export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, finished;
+let moveablesByTile = {};
+
+const tileBoxesFromPuzzle = puzzle => Object.fromEntries(puzzle.shelf.map(
+	tile => [tile.name, {x: tile.x, y: tile.y, width: tile.shape.width, height: tile.shape.height}])
+);
+const tileBoxes = writable(tileBoxesFromPuzzle(puzzle));
 
 // Foollowing variables are for reactiveness.
 let height = puzzle.height;
@@ -21,6 +28,19 @@ const onFileChange = event => {
 const onSetExampleImage = () => {
 	setImageByUrl(puzzle, puzzle.exampleImage.url).then(afterRescale);
 }
+const resetMoveables = () => {
+	for (const moveable of Object.values(moveablesByTile)) {
+		const manager = moveable.getManager();
+		const [translateX, translateY] = manager.state.targetMatrix.slice(12, 14);
+		moveable.request(
+			"draggable", {deltaX: -translateX, deltaY: -translateY}, true
+		);
+	}
+}
+const shufflePuzzle = () => {
+	shuffle(puzzle);
+	tileBoxes.set(tileBoxesFromPuzzle(puzzle));
+}
 const updateMoveableGuidelines = () => {
 	updateGuidelines(puzzle);
 	horizontalGuidelines = puzzle.horizontalGuidelines;
@@ -39,6 +59,8 @@ window.addEventListener('resize', () => {rescale(puzzle); afterRescale();});
 	<p>
 		<input type="file" id="file-input-{puzzle.name}" on:change={onFileChange}/>
 		<button type="button" class="button" on:click={onSetExampleImage}>Use example image</button>
+		<button type="button" class="button" on:click={resetMoveables}>Reset</button>
+		<button type="button" class="button" on:click={shufflePuzzle}>Shuffle</button>
 	</p>
 	<div class="grid" id="grid-{puzzle.name}" style="height: {height}vw">
 	{#each puzzle.grid as cell}
@@ -47,7 +69,8 @@ window.addEventListener('resize', () => {rescale(puzzle); afterRescale();});
 	</div>
 	<div class="shelf" id="shelf-{puzzle.name}" style="height: {height}vw">
 	{#each puzzle.shelf as tile}
-	<div class="tile" id="tile-{puzzle.name}-{tile.name}" bind:this={puzzle.tileTargets[tile.name]} style="left: {tile.x * 100}%; top: {tile.y * 100}%; width: {tile.shape.width * 100}%; height: {tile.shape.height * 100}%">
+	{@const tileBox = $tileBoxes[tile.name]}
+	<div class="tile" id="tile-{puzzle.name}-{tile.name}" bind:this={puzzle.tileTargets[tile.name]} style="left: {tileBox.x * 100}%; top: {tileBox.y * 100}%; width: {tile.shape.width * 100}%; height: {tile.shape.height * 100}%">
 		<svg style="width: 100%; height: 100%;">
 			<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">{tile.label}</text>
 		</svg>
@@ -61,6 +84,7 @@ window.addEventListener('resize', () => {rescale(puzzle); afterRescale();});
 		verticalGuidelines={verticalGuidelines}
 		snapThreshold={10}
 		on:drag={onDrag}
+		bind:this={moveablesByTile[tile.name]}
 	/>
 	{/each}
 	</div>
