@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82.88" height="82.88" version="1.1" viewBox="0 0 82.88 82.88" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <filter id="filter891" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="5 5"/>
+  </filter>
+  <filter id="filter905" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <filter id="filter919" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <filter id="filter925" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <clipPath id="clipPath134">
+   <rect x="5.1758e-6" width="41.44" height="41.44"/>
+  </clipPath>
+  <clipPath id="clipPath156">
+   <rect x="41.44" width="41.44" height="41.44"/>
+  </clipPath>
+  <clipPath id="clipPath190">
+   <rect x="5.1758e-6" y="41.44" width="41.44" height="41.44"/>
+  </clipPath>
+  <clipPath id="clipPath196">
+   <rect x="41.44" y="41.44" width="41.44" height="41.44"/>
+  </clipPath>
+ </defs>
+ <g transform="translate(41.44)" clip-path="url(#clipPath134)">
+  <rect x="-1.9073e-7" width="82.88" height="82.88" fill-opacity=".85"/>
+  <path d="m-3 4.9121 9 14.088v41l16 23 28-16 20 16h18v-86h-16v18l-10 10 18-6v31h-30l-30-53h-23z" fill="#48c300" filter="url(#filter891)"/>
+  <path d="m-3 22 8-6 15-1v-9l-5-9h17l2 9 11 1 5 15 6 2 5 15 13-2 2-8-5-14 4-4 11 2v37l-8 3-10 17 3 8 15-3v11h-30l-18-18-6-15 2-8 25-6-5-7h-11l-8-6h-11l-13 25 10 16 4 11v8h-28z" fill="#ebac00" filter="url(#filter905)"/>
+  <path d="m3 68v-9l-6-11v-19.975l10.278-3.5639 4.3907-8.6531-17.669 5.1923v68h95v-65h-17v8h-10l-12-26h-14l12 12v29l38-9v48h-19l-10-14 1-10-11-4-6 14 15 14h-28l-3-10-3 10h-25z" fill="#e54c00" filter="url(#filter919)" opacity=".5"/>
+  <path d="m-3 89v-13l13-2 9 12h48l19-9v-56l-11-8 14-4v80z" fill="#fff7cc" filter="url(#filter925)" opacity=".85"/>
+ </g>
+ <g transform="translate(.00029892 41.44)" clip-path="url(#clipPath156)">
+  <rect x="-1.9073e-7" width="82.88" height="82.88" fill-opacity=".85"/>
+  <path d="m-3 4.9121 9 14.088v41l16 23 28-16 20 16h18v-86h-16v18l-10 10 18-6v31h-30l-30-53h-23z" fill="#48c300" filter="url(#filter891)"/>
+  <path d="m-3 22 8-6 15-1v-9l-5-9h17l2 9 11 1 5 15 6 2 5 15 13-2 2-8-5-14 4-4 11 2v37l-8 3-10 17 3 8 15-3v11h-30l-18-18-6-15 2-8 25-6-5-7h-11l-8-6h-11l-13 25 10 16 4 11v8h-28z" fill="#ebac00" filter="url(#filter905)"/>
+  <path d="m3 68v-9l-6-11v-19.975l10.278-3.5639 4.3907-8.6531-17.669 5.1923v68h95v-65h-17v8h-10l-12-26h-14l12 12v29l38-9v48h-19l-10-14 1-10-11-4-6 14 15 14h-28l-3-10-3 10h-25z" fill="#e54c00" filter="url(#filter919)" opacity=".5"/>
+  <path d="m-3 89v-13l13-2 9 12h48l19-9v-56l-11-8 14-4v80z" fill="#fff7cc" filter="url(#filter925)" opacity=".85"/>
+ </g>
+ <g transform="translate(-41.44)" clip-path="url(#clipPath196)">
+  <rect x="-1.9073e-7" width="82.88" height="82.88" fill-opacity=".85"/>
+  <path d="m-3 4.9121 9 14.088v41l16 23 28-16 20 16h18v-86h-16v18l-10 10 18-6v31h-30l-30-53h-23z" fill="#48c300" filter="url(#filter891)"/>
+  <path d="m-3 22 8-6 15-1v-9l-5-9h17l2 9 11 1 5 15 6 2 5 15 13-2 2-8-5-14 4-4 11 2v37l-8 3-10 17 3 8 15-3v11h-30l-18-18-6-15 2-8 25-6-5-7h-11l-8-6h-11l-13 25 10 16 4 11v8h-28z" fill="#ebac00" filter="url(#filter905)"/>
+  <path d="m3 68v-9l-6-11v-19.975l10.278-3.5639 4.3907-8.6531-17.669 5.1923v68h95v-65h-17v8h-10l-12-26h-14l12 12v29l38-9v48h-19l-10-14 1-10-11-4-6 14 15 14h-28l-3-10-3 10h-25z" fill="#e54c00" filter="url(#filter919)" opacity=".5"/>
+  <path d="m-3 89v-13l13-2 9 12h48l19-9v-56l-11-8 14-4v80z" fill="#fff7cc" filter="url(#filter925)" opacity=".85"/>
+ </g>
+ <g transform="translate(0 -41.44)" clip-path="url(#clipPath190)">
+  <rect x="-1.9073e-7" width="82.88" height="82.88" fill-opacity=".85"/>
+  <path d="m-3 4.9121 9 14.088v41l16 23 28-16 20 16h18v-86h-16v18l-10 10 18-6v31h-30l-30-53h-23z" fill="#48c300" filter="url(#filter891)"/>
+  <path d="m-3 22 8-6 15-1v-9l-5-9h17l2 9 11 1 5 15 6 2 5 15 13-2 2-8-5-14 4-4 11 2v37l-8 3-10 17 3 8 15-3v11h-30l-18-18-6-15 2-8 25-6-5-7h-11l-8-6h-11l-13 25 10 16 4 11v8h-28z" fill="#ebac00" filter="url(#filter905)"/>
+  <path d="m3 68v-9l-6-11v-19.975l10.278-3.5639 4.3907-8.6531-17.669 5.1923v68h95v-65h-17v8h-10l-12-26h-14l12 12v29l38-9v48h-19l-10-14 1-10-11-4-6 14 15 14h-28l-3-10-3 10h-25z" fill="#e54c00" filter="url(#filter919)" opacity=".5"/>
+  <path d="m-3 89v-13l13-2 9 12h48l19-9v-56l-11-8 14-4v80z" fill="#fff7cc" filter="url(#filter925)" opacity=".85"/>
+ </g>
+</svg>
