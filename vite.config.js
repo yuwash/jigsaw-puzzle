@@ -7,7 +7,6 @@ export default defineConfig({
     svelte(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.jpg', 'favicon.svg'],
       manifest: {
         name: 'Jigsaw Puzzle',
         short_name: 'Puzzle',
@@ -21,6 +20,7 @@ export default defineConfig({
           },
           {
             src: 'favicon.svg',
+            sizes: 'any',
             type: 'image/svg+xml'
           }
         ]
