@@ -12,11 +12,12 @@ export default defineConfig({
         short_name: 'Puzzle',
         description: 'Simple jigsaw puzzle game.',
         theme_color: '#ffe4c4', // 'brisque'
+        includeAssets: ['./src/blur.jpg'],
         icons: [
           {
-            src: 'favicon.jpg',
+            src: 'favicon.png',
             sizes: '64x64',
-            type: 'image/jpg'
+            type: 'image/png'
           },
           {
             src: 'favicon.svg',

@@ -1,256 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="512"
-   height="512"
-   version="1.1"
-   viewBox="0 0 512.00002 512.00002"
-   id="svg202"
-   sodipodi:docname="blurr-puzzle.svg"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1203"
-     inkscape:window-height="617"
-     id="namedview204"
-     showgrid="false"
-     inkscape:zoom="0.77"
-     inkscape:cx="256"
-     inkscape:cy="256"
-     inkscape:window-x="19"
-     inkscape:window-y="13"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg202" />
-  <metadata
-     id="metadata126">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs152">
-    <filter
-       id="filter891"
-       color-interpolation-filters="sRGB">
-      <feGaussianBlur
-         result="blur"
-         stdDeviation="5 5"
-         id="feGaussianBlur128" />
-    </filter>
-    <filter
-       id="filter905"
-       color-interpolation-filters="sRGB">
-      <feGaussianBlur
-         result="blur"
-         stdDeviation="3 3"
-         id="feGaussianBlur131" />
-    </filter>
-    <filter
-       id="filter919"
-       color-interpolation-filters="sRGB">
-      <feGaussianBlur
-         result="blur"
-         stdDeviation="3 3"
-         id="feGaussianBlur134" />
-    </filter>
-    <filter
-       id="filter925"
-       color-interpolation-filters="sRGB">
-      <feGaussianBlur
-         result="blur"
-         stdDeviation="3 3"
-         id="feGaussianBlur137" />
-    </filter>
-    <clipPath
-       id="clipPath134">
-      <rect
-         x="5.1758002e-06"
-         width="41.439999"
-         height="41.439999"
-         id="rect140"
-         y="0" />
-    </clipPath>
-    <clipPath
-       id="clipPath156">
-      <rect
-         x="41.439999"
-         width="41.439999"
-         height="41.439999"
-         id="rect143"
-         y="0" />
-    </clipPath>
-    <clipPath
-       id="clipPath190">
-      <rect
-         x="5.1758002e-06"
-         y="41.439999"
-         width="41.439999"
-         height="41.439999"
-         id="rect146" />
-    </clipPath>
-    <clipPath
-       id="clipPath196">
-      <rect
-         x="41.439999"
-         y="41.439999"
-         width="41.439999"
-         height="41.439999"
-         id="rect149" />
-    </clipPath>
-  </defs>
-  <g
-     transform="matrix(6.177584,0,0,6.1776062,255.99909,7.11036e-6)"
-     clip-path="url(#clipPath134)"
-     id="g164">
-    <rect
-       x="-1.9073001e-07"
-       width="82.879997"
-       height="82.879997"
-       fill-opacity="0.85"
-       id="rect154"
-       y="0" />
-    <path
-       d="m -3,4.9121 9,14.088 v 41 l 16,23 28,-16 20,16 h 18 v -86 H 72 v 18 l -10,10 18,-6 v 31 H 50 l -30,-53 H -3 Z"
-       fill="#48c300"
-       filter="url(#filter891)"
-       id="path156" />
-    <path
-       d="M -3,22 5,16 20,15 V 6 l -5,-9 h 17 l 2,9 11,1 5,15 6,2 5,15 13,-2 2,-8 -5,-14 4,-4 11,2 v 37 l -8,3 -10,17 3,8 15,-3 V 86 H 56 L 38,68 32,53 34,45 59,39 54,32 H 43 L 35,26 H 24 l -13,25 10,16 4,11 v 8 H -3 Z"
-       fill="#ebac00"
-       filter="url(#filter905)"
-       id="path158" />
-    <path
-       d="M 3,68 V 59 L -3,48 V 28.025 l 10.278,-3.5639 4.3907,-8.6531 -17.669,5.1923 v 68 h 95 v -65 h -17 v 8 h -10 l -12,-26 h -14 l 12,12 v 29 l 38,-9 v 48 h -19 l -10,-14 1,-10 -11,-4 -6,14 15,14 h -28 l -3,-10 -3,10 h -25 z"
-       fill="#e54c00"
-       filter="url(#filter919)"
-       opacity="0.5"
-       id="path160" />
-    <path
-       d="M -3,89 V 76 l 13,-2 9,12 H 67 L 86,77 V 21 L 75,13 89,9 v 80 z"
-       fill="#fff7cc"
-       filter="url(#filter925)"
-       opacity="0.85"
-       id="path162" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <filter id="filter891" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="5 5"/>
+  </filter>
+  <filter id="filter905" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <filter id="filter919" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <filter id="filter925" color-interpolation-filters="sRGB">
+   <feGaussianBlur result="blur" stdDeviation="3 3"/>
+  </filter>
+  <clipPath id="clipPath78">
+   <rect x="756" y="7.1104e-6" width="256" height="256" stroke-width="6.1776"/>
+  </clipPath>
+  <clipPath id="clipPath87">
+   <rect x="1012" y="7.1104e-6" width="256" height="256"/>
+  </clipPath>
+  <clipPath id="clipPath95">
+   <rect x="756" y="256" width="256" height="256"/>
+  </clipPath>
+  <clipPath id="clipPath101">
+   <rect x="1012" y="256" width="256" height="256"/>
+  </clipPath>
+ </defs>
+ <g transform="translate(-500)" clip-path="url(#clipPath78)">
+  <g id="g164" transform="matrix(6.1776 0 0 6.1776 756 7.1104e-6)" clip-path="none">
+   <rect x="-1.9073e-7" width="82.88" height="82.88" fill-opacity=".85"/>
+   <path d="m-3 4.9121 9 14.088v41l16 23 28-16 20 16h18v-86h-16v18l-10 10 18-6v31h-30l-30-53h-23z" fill="#48c300" filter="url(#filter891)"/>
+   <path d="m-3 22 8-6 15-1v-9l-5-9h17l2 9 11 1 5 15 6 2 5 15 13-2 2-8-5-14 4-4 11 2v37l-8 3-10 17 3 8 15-3v11h-30l-18-18-6-15 2-8 25-6-5-7h-11l-8-6h-11l-13 25 10 16 4 11v8h-28z" fill="#ebac00" filter="url(#filter905)"/>
+   <path d="m3 68v-9l-6-11v-19.975l10.278-3.5639 4.3907-8.6531-17.669 5.1923v68h95v-65h-17v8h-10l-12-26h-14l12 12v29l38-9v48h-19l-10-14 1-10-11-4-6 14 15 14h-28l-3-10-3 10h-25z" fill="#e54c00" filter="url(#filter919)" opacity=".5"/>
+   <path d="m-3 89v-13l13-2 9 12h48l19-9v-56l-11-8 14-4v80z" fill="#fff7cc" filter="url(#filter925)" opacity=".85"/>
   </g>
-  <g
-     transform="matrix(6.177584,0,0,6.1776062,0.00185371,256.00001)"
-     clip-path="url(#clipPath156)"
-     id="g176">
-    <rect
-       x="-1.9073001e-07"
-       width="82.879997"
-       height="82.879997"
-       fill-opacity="0.85"
-       id="rect166"
-       y="0" />
-    <path
-       d="m -3,4.9121 9,14.088 v 41 l 16,23 28,-16 20,16 h 18 v -86 H 72 v 18 l -10,10 18,-6 v 31 H 50 l -30,-53 H -3 Z"
-       fill="#48c300"
-       filter="url(#filter891)"
-       id="path168" />
-    <path
-       d="M -3,22 5,16 20,15 V 6 l -5,-9 h 17 l 2,9 11,1 5,15 6,2 5,15 13,-2 2,-8 -5,-14 4,-4 11,2 v 37 l -8,3 -10,17 3,8 15,-3 V 86 H 56 L 38,68 32,53 34,45 59,39 54,32 H 43 L 35,26 H 24 l -13,25 10,16 4,11 v 8 H -3 Z"
-       fill="#ebac00"
-       filter="url(#filter905)"
-       id="path170" />
-    <path
-       d="M 3,68 V 59 L -3,48 V 28.025 l 10.278,-3.5639 4.3907,-8.6531 -17.669,5.1923 v 68 h 95 v -65 h -17 v 8 h -10 l -12,-26 h -14 l 12,12 v 29 l 38,-9 v 48 h -19 l -10,-14 1,-10 -11,-4 -6,14 15,14 h -28 l -3,-10 -3,10 h -25 z"
-       fill="#e54c00"
-       filter="url(#filter919)"
-       opacity="0.5"
-       id="path172" />
-    <path
-       d="M -3,89 V 76 l 13,-2 9,12 H 67 L 86,77 V 21 L 75,13 89,9 v 80 z"
-       fill="#fff7cc"
-       filter="url(#filter925)"
-       opacity="0.85"
-       id="path174" />
-  </g>
-  <g
-     transform="matrix(6.177584,0,0,6.1776062,-255.99907,7.11036e-6)"
-     clip-path="url(#clipPath196)"
-     id="g188">
-    <rect
-       x="-1.9073001e-07"
-       width="82.879997"
-       height="82.879997"
-       fill-opacity="0.85"
-       id="rect178"
-       y="0" />
-    <path
-       d="m -3,4.9121 9,14.088 v 41 l 16,23 28,-16 20,16 h 18 v -86 H 72 v 18 l -10,10 18,-6 v 31 H 50 l -30,-53 H -3 Z"
-       fill="#48c300"
-       filter="url(#filter891)"
-       id="path180" />
-    <path
-       d="M -3,22 5,16 20,15 V 6 l -5,-9 h 17 l 2,9 11,1 5,15 6,2 5,15 13,-2 2,-8 -5,-14 4,-4 11,2 v 37 l -8,3 -10,17 3,8 15,-3 V 86 H 56 L 38,68 32,53 34,45 59,39 54,32 H 43 L 35,26 H 24 l -13,25 10,16 4,11 v 8 H -3 Z"
-       fill="#ebac00"
-       filter="url(#filter905)"
-       id="path182" />
-    <path
-       d="M 3,68 V 59 L -3,48 V 28.025 l 10.278,-3.5639 4.3907,-8.6531 -17.669,5.1923 v 68 h 95 v -65 h -17 v 8 h -10 l -12,-26 h -14 l 12,12 v 29 l 38,-9 v 48 h -19 l -10,-14 1,-10 -11,-4 -6,14 15,14 h -28 l -3,-10 -3,10 h -25 z"
-       fill="#e54c00"
-       filter="url(#filter919)"
-       opacity="0.5"
-       id="path184" />
-    <path
-       d="M -3,89 V 76 l 13,-2 9,12 H 67 L 86,77 V 21 L 75,13 89,9 v 80 z"
-       fill="#fff7cc"
-       filter="url(#filter925)"
-       opacity="0.85"
-       id="path186" />
-  </g>
-  <g
-     transform="matrix(6.177584,0,0,6.1776062,7.1103296e-6,-255.99999)"
-     clip-path="url(#clipPath190)"
-     id="g200">
-    <rect
-       x="-1.9073001e-07"
-       width="82.879997"
-       height="82.879997"
-       fill-opacity="0.85"
-       id="rect190"
-       y="0" />
-    <path
-       d="m -3,4.9121 9,14.088 v 41 l 16,23 28,-16 20,16 h 18 v -86 H 72 v 18 l -10,10 18,-6 v 31 H 50 l -30,-53 H -3 Z"
-       fill="#48c300"
-       filter="url(#filter891)"
-       id="path192" />
-    <path
-       d="M -3,22 5,16 20,15 V 6 l -5,-9 h 17 l 2,9 11,1 5,15 6,2 5,15 13,-2 2,-8 -5,-14 4,-4 11,2 v 37 l -8,3 -10,17 3,8 15,-3 V 86 H 56 L 38,68 32,53 34,45 59,39 54,32 H 43 L 35,26 H 24 l -13,25 10,16 4,11 v 8 H -3 Z"
-       fill="#ebac00"
-       filter="url(#filter905)"
-       id="path194" />
-    <path
-       d="M 3,68 V 59 L -3,48 V 28.025 l 10.278,-3.5639 4.3907,-8.6531 -17.669,5.1923 v 68 h 95 v -65 h -17 v 8 h -10 l -12,-26 h -14 l 12,12 v 29 l 38,-9 v 48 h -19 l -10,-14 1,-10 -11,-4 -6,14 15,14 h -28 l -3,-10 -3,10 h -25 z"
-       fill="#e54c00"
-       filter="url(#filter919)"
-       opacity="0.5"
-       id="path196" />
-    <path
-       d="M -3,89 V 76 l 13,-2 9,12 H 67 L 86,77 V 21 L 75,13 89,9 v 80 z"
-       fill="#fff7cc"
-       filter="url(#filter925)"
-       opacity="0.85"
-       id="path198" />
-  </g>
+ </g>
+ <use transform="translate(-1012)" width="100%" height="100%" clip-path="url(#clipPath101)" xlink:href="#g164"/>
+ <use transform="translate(-756 256)" width="100%" height="100%" clip-path="url(#clipPath87)" xlink:href="#g164"/>
+ <use transform="translate(-756 -256)" width="100%" height="100%" clip-path="url(#clipPath95)" xlink:href="#g164"/>
 </svg>
