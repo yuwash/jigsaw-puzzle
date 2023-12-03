@@ -1,9 +1,8 @@
 <script>
-import Moveable from "svelte-moveable";
 import { writable } from 'svelte/store';
 import { tick } from "svelte";
-export let puzzle, checkTiles, setImage, setImageByUrl, updateGuidelines, rescale, shuffle, solutionMoves, finished;
-let gridTarget, puzzleAreaTarget, puzzleAreaMoveable;
+export let puzzle;
+let gridTarget;
 let moveablesByTile = {};
 
 const tileBoxesFromPuzzle = puzzle => Object.fromEntries(puzzle.shelf.map(
@@ -13,74 +12,6 @@ const tileBoxes = writable(tileBoxesFromPuzzle(puzzle));
 
 // Foollowing variables are for reactiveness.
 let height = puzzle.height;
-let horizontalGuidelines = puzzle.horizontalGuidelines;
-let verticalGuidelines = puzzle.verticalGuidelines;
-
-const onDrag = ({ detail: e }) => {
-	e.target.style.transform = e.transform;
-	const finishedNow = checkTiles(puzzle);
-	if(finished !== finishedNow){finished = finishedNow};
-}
-const onFileChange = event => {
-	const file = event.target.files[0];
-	if (!file) return;
-	setImage(puzzle, event.target.files[0]).then(afterRescale);
-}
-const onSetExampleImage = () => {
-	setImageByUrl(puzzle, puzzle.exampleImage.url).then(afterRescale);
-}
-const onResizePuzzleArea = ({ detail: e }) => {
-	puzzleAreaTarget.style.width = `${e.width}px`;
-	const gridHeightFactor = (
-		gridTarget.getClientRects()[0].height / puzzleAreaTarget.getClientRects()[0].height
-	);
-	puzzle.height = 100 * gridHeightFactor * e.height / window.innerWidth;
-	rescale(puzzle);
-	afterRescaleNoUpdateRect();
-}
-const resetMoveables = () => {
-	for (const moveable of Object.values(moveablesByTile)) {
-		const manager = moveable.getManager();
-		const [translateX, translateY] = manager.state.targetMatrix.slice(12, 14);
-		moveable.request(
-			"draggable", {deltaX: -translateX, deltaY: -translateY}, true
-		);
-	}
-}
-const shufflePuzzle = () => {
-	resetMoveables();
-	shuffle(puzzle);
-	tileBoxes.set(tileBoxesFromPuzzle(puzzle));
-}
-const updateMoveableGuidelines = () => {
-	updateGuidelines(puzzle);
-	horizontalGuidelines = puzzle.horizontalGuidelines;
-	verticalGuidelines = puzzle.verticalGuidelines;
-}
-const afterRescale = () => {
-	height = puzzle.height;
-	tick().then(() => {
-		updateMoveableGuidelines();
-		puzzleAreaMoveable.updateRect();
-	});
-}
-const afterRescaleNoUpdateRect = () => {
-	height = puzzle.height;
-	tick().then(updateMoveableGuidelines);
-}
-const solvePuzzle = () => {
-	const moves = solutionMoves(puzzle);	
-	for (const [tileName, move] of Object.entries(moves)) {
-		const moveable = moveablesByTile[tileName];
-		moveable.request("draggable", move, true);
-	}
-}
-</script>
-
-<svelte:window
-	on:load={updateMoveableGuidelines}
-	on:resize={() => {rescale(puzzle); afterRescale();}}
-/>
 
 <main class={'puzzle' + (finished ? ' finished' : '')}>
 	<p class="puzzle-label"><strong>{puzzle.label}</strong></p>
